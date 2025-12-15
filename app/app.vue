@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import AppHeader from '../components/AppHeader.vue'
+import HeroBanner from '../components/HeroBanner.vue'
 
 useHead({
   title: 'Watsons Clone - Anasayfa',
@@ -22,7 +23,6 @@ useHead({
 </script>
 
 <style>
-
 body {
   margin: 0;
   padding: 0;
