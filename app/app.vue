@@ -11,6 +11,7 @@
 <script setup lang="ts">
 import AppHeader from '../components/AppHeader.vue'
 import HeroBanner from '../components/HeroBanner.vue'
+import FeaturedProductsSection from '../components/FeaturedProductsSection.vue'
 
 useHead({
   title: 'Watsons Clone - Anasayfa',

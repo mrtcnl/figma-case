@@ -1,5 +1,5 @@
 <template>
-    <div class="carousel-container">
+    <div class="carousel-container" :style="{ background: slideBackgrounds[currentSlide] }">
 
         <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
 
@@ -44,8 +44,6 @@
         <button class="arrow right-arrow" @click="nextSlide">
             <Icon name="fa-solid:chevron-right" />
         </button>
-
-
 
     </div>
 </template>
@@ -101,6 +99,17 @@ onMounted(() => {
 onUnmounted(() => {
     clearInterval(autoPlayInterval)
 })
+
+const slideBackgrounds = [
+    `linear-gradient(0deg, #F2F0FF, #F2F0FF), 
+   linear-gradient(87.81deg, #F2F0FF 35.04%, rgba(255, 255, 255, 0.67) 53.63%, rgba(252, 252, 255, 0.96) 64.78%, #F2F0FF 90.91%)`,
+
+    `linear-gradient(0deg, #FFF3E0, #FFF3E0), 
+   linear-gradient(87.81deg, #FFF3E0 35.04%, rgba(255, 255, 255, 0.67) 53.63%, rgba(255, 248, 225, 0.96) 64.78%, #FFF3E0 90.91%)`,
+
+    `linear-gradient(0deg, #E8F5E9, #E8F5E9), 
+   linear-gradient(87.81deg, #E8F5E9 35.04%, rgba(255, 255, 255, 0.67) 53.63%, rgba(232, 245, 233, 0.96) 64.78%, #E8F5E9 90.91%)`
+]
 </script>
 
 <style scoped>
@@ -109,9 +118,7 @@ onUnmounted(() => {
     height: 400px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(0deg, #F2F0FF, #F2F0FF),
-        linear-gradient(87.81deg, #F2F0FF 35.04%, rgba(255, 255, 255, 0.67) 53.63%, rgba(252, 252, 255, 0.96) 64.78%, #F2F0FF 90.91%);
-
+    transition: all 0.8s ease-in-out;
 }
 
 .slider-track {
@@ -273,6 +280,7 @@ onUnmounted(() => {
     color: #333;
     font-size: 32px;
     z-index: 10;
+    background: none;
 }
 
 .arrow:hover {
@@ -289,12 +297,13 @@ onUnmounted(() => {
 
 .dots-container {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 6px;
+    height: 6px;
     background-color: #ccc;
     border-radius: 50%;
     cursor: pointer;
@@ -303,6 +312,8 @@ onUnmounted(() => {
 
 .dot.active {
     background-color: #2e1053;
+    width: 8px;
+    height: 8px;
 }
 
 @media (max-width: 768px) {
