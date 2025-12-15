@@ -4,6 +4,8 @@
     <main>
       <HeroBanner />
       <FeaturedProductsSection />
+      <NewsletterBanner />
+      <NiveaBanner />
     </main>
   </div>
 </template>
@@ -12,6 +14,8 @@
 import AppHeader from '../components/AppHeader.vue'
 import HeroBanner from '../components/HeroBanner.vue'
 import FeaturedProductsSection from '../components/FeaturedProductsSection.vue'
+import NewsletterBanner from '../components/NewsletterBanner.vue'
+import NiveaBanner from '../components/NiveaBanner.vue'
 
 useHead({
   title: 'Watsons Clone - Anasayfa',
