@@ -94,7 +94,6 @@ const products = ref([
 }
 
 .featured-section-title {
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 24px;
     color: #0099A8;
@@ -168,7 +167,6 @@ const products = ref([
     background: none;
     border: none;
     color: white;
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -203,7 +201,6 @@ const products = ref([
 }
 
 .product-title {
-    font-family: Roboto;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;

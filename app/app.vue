@@ -2,27 +2,24 @@
   <div class="main-layout">
     <AppHeader />
     <main>
-      <HeroBanner />
-      <FeaturedProductsSection />
-      <NewsletterBanner />
-      <NiveaBanner />
+      <NuxtPage />
     </main>
+    <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-import AppHeader from '../components/AppHeader.vue'
-import HeroBanner from '../components/HeroBanner.vue'
-import FeaturedProductsSection from '../components/FeaturedProductsSection.vue'
-import NewsletterBanner from '../components/NewsletterBanner.vue'
-import NiveaBanner from '../components/NiveaBanner.vue'
+import AppHeader from './components/AppHeader.vue' 
+import AppFooter from './components/AppFooter.vue'
 
 useHead({
-  title: 'Watsons Clone - Anasayfa',
   link: [
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap' }
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap'
+    }
   ]
 })
 </script>

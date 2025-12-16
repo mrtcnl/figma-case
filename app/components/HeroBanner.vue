@@ -156,7 +156,6 @@ const slideBackgrounds = [
 }
 
 .brand-tag {
-    font-family: Roboto;
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
@@ -177,7 +176,6 @@ const slideBackgrounds = [
 }
 
 .hero-desc {
-    font-family: Roboto;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
