@@ -60,10 +60,13 @@
                             <div class="form-group full-width"><label>Card Holder Name *</label><input type="text"
                                     class="form-input" v-model="cardForm.holderName"
                                     @input="cardForm.holderName = cardForm.holderName.toUpperCase()" maxlength="26" />
+                                <div class="required-note">Full name on card</div>
                             </div>
-                            <div class="form-group full-width"><label>Card Number *</label><input type="text"
-                                    class="form-input" v-model="cardForm.cardNumber" @input="formatCardNumber"
-                                    placeholder="0000 0000 0000 0000" maxlength="19" /></div>
+                            <div class="form-group full-width"><label>Card Number *</label>
+                                <input type="text" class="form-input" v-model="cardForm.cardNumber"
+                                    @input="formatCardNumber" placeholder="0000 0000 0000 0000" maxlength="19" />
+                                <div class="required-note">Enter digits without spaces</div>
+                            </div>
                             <div class="form-grid">
                                 <div class="form-group"><label>Expiry Date *</label><input type="text"
                                         class="form-input" v-model="cardForm.expiryDate" placeholder="MM / YY"
@@ -86,12 +89,13 @@
                                         {{ cardForm.holderName || 'CARD HOLDER' }}</strong>
                                 </div>
                                 <div class="card-cvv"><span>CVV</span><strong>{{ cardForm.cvv || 'XXX' }}</strong></div>
+                                <div
+                                    style="position: absolute; bottom: 20px; right: 20px; text-align: right; font-size: 12px; color: #666;">
+                                    <span>Expires</span><br><strong style="color: #333; font-size: 14px; ">{{
+                                        cardForm.expiryDate || 'MM / YY' }}</strong>
+                                </div>
                             </div>
-                            <div
-                                style="position: absolute; bottom: 20px; right: 20px; text-align: right; font-size: 12px; color: #666;">
-                                <span>Expires</span><br><strong style="color: #333; font-size: 14px;">{{
-                                    cardForm.expiryDate || 'MM / YY' }}</strong>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -100,8 +104,10 @@
             </div>
 
             <div class="checkout-page-right-container">
+                <h2 class="section-title">
+                    Shopping cart summary
+                </h2>
                 <div class="cart-summary-box">
-                    <h2 class="cart-title">Your Cart</h2>
 
                     <div class="cart-items">
                         <div v-for="item in cartItems" :key="item.id" class="cart-item">
@@ -110,25 +116,27 @@
                             </div>
                             <div class="item-details">
                                 <h3 class="item-name">{{ item.name }}</h3>
-                                <div class="item-price">{{ item.price }} TL</div>
+                                <div class="item-price-container">
+                                    <div class="item-price">{{ item.price }} TL</div>
 
-                                <div class="qty-controls">
-                                    <button class="qty-btn" @click="decreaseQty(item.id)">-</button>
-                                    <span class="qty-value">{{ item.quantity }}</span>
-                                    <button class="qty-btn" @click="increaseQty(item.id)">+</button>
+                                    <div class="qty-controls">
+                                        <button class="qty-btn" @click="decreaseQty(item.id)">-</button>
+                                        <span class="qty-value">{{ item.quantity }}</span>
+                                        <button class="qty-btn" @click="increaseQty(item.id)">+</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <input type="text" class="form-input" placeholder="Discount code" />
                     <div class="cart-totals">
                         <div class="total-row">
-                            <span>Cart Subtotal</span>
+                            <span>Subtotal</span>
                             <span>{{ subTotal.toFixed(2) }} TL</span>
                         </div>
                         <div class="total-row">
                             <span>Shipping</span>
-                            <span>Free</span>
+                            <span>{{ shippingCost }} TL</span>
                         </div>
                         <div class="divider"></div>
                         <div class="total-row grand-total">
@@ -165,17 +173,22 @@ const cartItems = ref([
     {
         id: 2,
         name: 'Diadermine Lift + Serum Booster Vitamin C',
-        price: 42.25,
-        quantity: 2,
+        price: 29.45,
+        quantity: 1,
         image: img2
     }
 ])
+
+
+const shippingCost = 10.50
 
 const subTotal = computed(() => {
     return cartItems.value.reduce((total, item) => total + (item.price * item.quantity), 0)
 })
 
-const grandTotal = computed(() => subTotal.value)
+const grandTotal = computed(() => {
+    return subTotal.value + shippingCost
+})
 
 const increaseQty = (id: number) => {
     const item = cartItems.value.find(i => i.id === id)
@@ -275,6 +288,9 @@ const formatExpiryDate = (e: Event) => {
 
 .checkout-page-right-container {
     grid-column: span 1 / span 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .form-section {
@@ -426,7 +442,7 @@ const formatExpiryDate = (e: Event) => {
 .required-note {
     font-size: 12px;
     color: #8493A8;
-    margin-top: 10px;
+    margin-top: 2px;
 }
 
 .pay-btn {
@@ -449,7 +465,7 @@ const formatExpiryDate = (e: Event) => {
 .cart-summary-box {
     box-shadow: 0px 4px 16px 0px #2A2A480A;
     border: 1px solid #ECECEC;
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -475,14 +491,15 @@ const formatExpiryDate = (e: Event) => {
     display: flex;
     gap: 16px;
     align-items: flex-start;
+    box-shadow: 0px 1px 2px 0px #37415114;
 }
 
 .item-image {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #ddd;
+    width: 40%;
+    height: 100%;
+    padding: 16px;
     border-radius: 4px;
-    background-color: white;
+    background-color: #ECECEC29;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -490,7 +507,7 @@ const formatExpiryDate = (e: Event) => {
 
 .item-image img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 96px;
     object-fit: contain;
 }
 
@@ -498,19 +515,26 @@ const formatExpiryDate = (e: Event) => {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .item-name {
-    font-size: 13px;
-    font-weight: 400;
-    color: #333;
-    line-height: 1.4;
-    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    vertical-align: middle;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: #2A2A48;
+}
+
+.item-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .item-price {
@@ -562,13 +586,15 @@ const formatExpiryDate = (e: Event) => {
 .total-row {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+    color: #485363;
 }
 
 .divider {
+    width: 100%;
     height: 1px;
-    background-color: #E0E0E0;
+    background-color: #ECECEC;
     margin: 8px 0;
 }
 
