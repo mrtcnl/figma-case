@@ -1,8 +1,3 @@
-/* .app-header {} */
-
-/* app/assets/css/main.css */
-
-/* Tüm elementler için kutu modelini düzeltir */
 *,
 *::before,
 *::after {
@@ -11,7 +6,6 @@
     padding: 0;
 }
 
-/* Genel Body Ayarları */
 body {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -22,5 +16,9 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+button{
+    border: none;
 }
 

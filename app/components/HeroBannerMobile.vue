@@ -1,5 +1,5 @@
 <template>
-    <div class="carousel-container" :style="{ background: slideBackgrounds[currentSlide] }">
+    <div class="carousel-container-mobile" :style="{ background: slideBackgrounds[currentSlide] }">
 
         <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
 
@@ -113,7 +113,7 @@ const slideBackgrounds = [
 </script>
 
 <style scoped>
-.carousel-container {
+.carousel-container-mobile {
     width: 100%;
     height: 400px;
     position: relative;
@@ -314,9 +314,137 @@ const slideBackgrounds = [
     height: 8px;
 }
 
+.carousel-container-mobile {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .carousel-container{
+    .hero-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-top: 20px;
+    }
+
+    .hero-image img {
+        max-height: 250px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .carousel-container-mobile {
+        display: flex;
+        height: auto;
+        padding-bottom: 16px;
+    }
+
+    .arrow {
         display: none;
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 16px;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        text-align: start;
+        gap: 16px;
+    }
+
+    .brand-tag {
+        font-size: 12px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .shop-btn {
+        width: 100%;
+    }
+
+    .hero-image {
+        width: 375px;
+        height: 295px;
+        position: relative;
+    }
+
+    .hero-image img {
+        position: absolute;
+        object-fit: contain;
+    }
+
+    .hero-banner-img1 {
+        width: 216px;
+        height: 203px;
+        top: 27px;
+        left: 10px;
+        z-index: 1;
+    }
+
+    .hero-banner-img2 {
+        width: 166px;
+        height: 166px;
+        top: 97px;
+        left: 62px;
+        z-index: 5;
+    }
+
+    .hero-banner-img3 {
+        width: 218px;
+        height: 217px;
+        top: 31px;
+        left: 91px;
+
+        z-index: 3;
+    }
+
+    .hero-banner-img4 {
+        width: 66px;
+        height: 211px;
+        top: 37px;
+        left: 243px;
+        z-index: 4;
+    }
+
+    .hero-circle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: #0099A81A;
+        z-index: 0;
+    }
+
+    .circle-front {
+        width: 264px;
+        height: 257px;
+        top: 10px;
+        right: 25px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    .circle-back {
+        width: 264px;
+        height: 257px;
+        top: 30px;
+        right: 50px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    .dots-container {
+        margin: 0 auto;
     }
 }
 </style>

@@ -170,8 +170,30 @@ const categories = ref([
 }
 
 @media (max-width: 768px) {
+    .featured-categories-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .featured-categories-title {
+        font-size: 20px;
+    }
+
     .featured-categories-grid {
         grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        height: 232px;
+    }
+
+    .category-content {
+        opacity: 1;
+        transform: translateY(0px);
     }
 }
 </style>

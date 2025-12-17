@@ -1,5 +1,6 @@
 <template>
     <header class="app-header">
+
         <div class="header-top-bar">
             <div class="header-top-left-container">
                 <button class="header-top-button">
@@ -12,9 +13,7 @@
                 </button>
             </div>
             <div class="header-top-mid-container">
-                <span>
-                    Watsons Beauty and Personal Care Awards Nominees!
-                </span>
+                <span>Watsons Beauty and Personal Care Awards Nominees!</span>
             </div>
             <div class="header-top-right-container">
                 <div class="header-top-button">
@@ -26,9 +25,11 @@
 
         <div class="header-main-container">
             <div class="header-main-left-container">
-                <a href="/" class="header-logo"><img class="header-logo" src="../assets/images/watsons-logo.png"
-                        alt=""></a>
+                <a href="/" class="header-logo">
+                    <img class="header-logo" src="~/assets/images/watsons-logo.png" alt="Watsons">
+                </a>
             </div>
+
             <div class="header-main-right-container">
                 <div class="search-bar-container">
                     <div class="search-bar-wrapper">
@@ -43,12 +44,9 @@
                             <span class="greeting">Hello,</span>
                             <span class="username">Clara Clara</span>
                         </div>
-
-                        <img src="../assets/images/user-img.jpg" alt="Clara Clara" class="user-avatar" />
-
+                        <img src="~/assets/images/user-img.jpg" alt="Clara Clara" class="user-avatar" />
                         <Icon name="fa-solid:chevron-down" class="dropdown-icon" size="12" />
                     </div>
-
                     <div class="divider"></div>
                     <a href="/checkout">
                         <div class="cart-wrapper">
@@ -58,15 +56,26 @@
                     </a>
                 </div>
             </div>
+
             <div class="header-main-right-container-mobile">
-                <a href="/checkout">
+                <button class="mobile-icon-btn">
+                    <Icon name="fa-solid:search" size="20" color="#333" />
+                </button>
+
+                <a href="/checkout" class="mobile-icon-btn">
                     <div class="cart-wrapper">
-                        <Icon name="fa7-solid:basket-shopping" class="cart-icon" size="24" />
+                        <Icon name="fa7-solid:basket-shopping" class="cart-icon" size="22" />
                         <span class="cart-badge">2</span>
                     </div>
                 </a>
+
+                <button class="mobile-icon-btn" @click="toggleMenu">
+                    <Icon name="fa-solid:bars" size="22" color="#333" />
+                </button>
             </div>
+
         </div>
+
         <div class="header-nav-menu">
             <a class="header-nav-item" href="#">CAMPAIGNS</a>
             <a class="header-nav-item" href="#">PERSONAL CARE</a>
@@ -77,8 +86,87 @@
             <a class="header-nav-item" href="#">HEALTHY LIFE</a>
             <a class="header-nav-item" href="#">BRANDS</a>
         </div>
+
+        <div class="mobile-menu-overlay" v-if="isMenuOpen" @click="toggleMenu"></div>
+
+        <div class="mobile-side-menu" :class="{ 'open': isMenuOpen }">
+
+            <div class="mobile-menu-header">
+                <button class="close-btn" @click="toggleMenu">
+                    <Icon name="fa-solid:times" size="16" />
+                </button>
+                <span class="menu-title">Menu</span>
+            </div>
+
+            <div class="mobile-menu-list">
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Campaigns</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Personal Care</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Skin Care</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Make - up</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Mother & Baby</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Healthy Life</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <Icon name="fa-solid:chevron-left" size="12" class="arrow-icon" />
+                    <span>Brands</span>
+                </a>
+            </div>
+
+            <div class="mobile-menu-footer">
+                <a href="#" class="mobile-footer-item">
+                    <span>My profile</span>
+                    <Icon name="fa-regular:user" size="18" />
+                </a>
+                <a href="#" class="mobile-footer-item">
+                    <span>Order history</span>
+                    <Icon name="fa7-solid:box-open" size="18" />
+                </a>
+                <a href="#" class="mobile-footer-item">
+                    <span>Help center</span>
+                    <Icon name="fa-regular:question-circle" size="18" />
+                </a>
+                <a href="#" class="mobile-footer-item logout">
+                    <span>Log out</span>
+                    <Icon name="fa-solid:sign-out-alt" size="18" />
+                </a>
+            </div>
+
+        </div>
+
     </header>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+    if (isMenuOpen.value) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'auto'
+    }
+}
+</script>
 
 <style scoped>
 .header-top-bar {
@@ -313,6 +401,126 @@
     display: none;
 }
 
+.mobile-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-side-menu {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-side-menu.open {
+    right: 0;
+}
+
+.mobile-menu-header {
+    background-color: #F2F0FF;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    padding: 5px;
+}
+
+.menu-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: right;
+    vertical-align: middle;
+
+}
+
+.mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: right;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.arrow-icon {
+    font-size: 14px;
+}
+
+.mobile-menu-footer {
+    margin-top: auto;
+    background-color: #ECECEC4D;
+    padding-bottom: 20px;
+}
+
+.mobile-footer-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: right;
+    vertical-align: middle;
+
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-footer-item.logout {
+    color: #333;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
 @media (max-width: 768px) {
     .header-top-bar {
         padding: 0 16px;
@@ -345,12 +553,13 @@
         height: 24px;
     }
 
-    .header-main-right-container-mobile{
+    .header-main-right-container-mobile {
         display: flex;
-        gap: 32px;
+        align-items: center;
+        gap: 20px;
     }
 
-    .header-nav-menu{
+    .header-nav-menu {
         display: none;
     }
 }

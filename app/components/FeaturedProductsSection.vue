@@ -31,6 +31,13 @@
                     <div class="product-title">{{ product.title }}</div>
                 </div>
 
+                <div class="mobile-add-btn">
+                    <button>
+                        <Icon name="fa-solid:shopping-basket" size="16" />
+                        ADD
+                    </button>
+                </div>
+
             </div>
 
         </div>
@@ -211,19 +218,74 @@ const products = ref([
     overflow: hidden;
 }
 
-@media (max-width: 1024px) {
-    .featured-section-container {
-        padding: 40px 20px;
-    }
-
-    .featured-section-bottom-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.mobile-add-btn {
+    display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .featured-section-container {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .featured-section-title {
+        font-weight: 500;
+        font-size: 20px;
+    }
+
     .featured-section-bottom-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .product-card {
+        height: auto;
+        gap: 8px;
+    }
+
+    .product-info {
+        gap: 8px;
+        padding: 16px;
+    }
+
+    .product-price {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .product-title {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .product-card:hover .product-actions {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    .mobile-add-btn {
+        display: flex;
+        justify-content: center;
+        padding: 16px;
+        border: 1px solid #ECECEC80;
+        width: 100%;
+    }
+
+    .mobile-add-btn button {
+        width: 100%;
+        height: 32;
+        gap: 8px;
+        opacity: 1;
+        height: 32px;
+        font-weight: 700;
+        color: white;
+        border-radius: 4px;
+        background-color: #FF27AD;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <HeroBanner />
+    <HeroBannerMobile />
     <FeaturedProductsSection />
     <NewsletterBanner />
     <NiveaBanner />
@@ -10,6 +11,7 @@
 
 <script setup lang="ts">
 import HeroBanner from '../components/HeroBanner.vue'
+import HeroBannerMobile from '../components/HeroBannerMobile.vue'
 import FeaturedProductsSection from '../components/FeaturedProductsSection.vue'
 import NewsletterBanner from '../components/NewsletterBanner.vue'
 import NiveaBanner from '../components/NiveaBanner.vue'

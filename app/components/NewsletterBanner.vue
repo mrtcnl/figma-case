@@ -83,4 +83,41 @@
     background-color: #e0209a;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .newsletter-banner-container {
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        gap: 16px;
+    }
+
+    .newsletter-banner-left-container {
+        gap: 8px;
+    }
+
+    .newsletter-banner-left-container h2 {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .newsletter-banner-left-container h3 {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .newsletter-input {
+        width: 60%;
+        height: 48px;
+        padding: 16px;
+        border: 1px solid #ECECEC;
+        border-radius: 4px;
+        font-size: 16px;
+        color: #333333;
+    }
+}
 </style>

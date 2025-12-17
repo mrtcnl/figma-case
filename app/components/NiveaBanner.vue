@@ -24,11 +24,10 @@
 .nivea-banner-container {
     width: 100%;
     height: 400px;
-    /* Arkaplan ayarların */
     background-image:
         linear-gradient(0deg, rgba(19, 138, 150, 0.3), rgba(19, 138, 150, 0.3)),
         linear-gradient(88.28deg, rgba(16, 160, 174, 0.3) 14.56%, rgba(98, 214, 225, 0.3) 56.19%, rgba(21, 166, 181, 0.3) 98.69%),
-        url('../../assets/images/nivea-banner/nivea-bg.png');
+        url('../assets/images/nivea-banner/nivea-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -135,5 +134,56 @@
     z-index: 5;
 }
 
-media 
+@media (max-width: 768px) {
+    .nivea-banner-container {
+        width: 100%;
+        height: 514px;
+    }
+
+    .nivea-banner-text-container {
+        width: 242px;
+        height: 238px;
+        gap: 12px;
+        margin-top: 250px;
+        z-index: 1;
+    }
+
+    .banner-subtitle {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .banner-slogan {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .discount-percent {
+        font-family: Rubik;
+        font-size: 34px;
+        line-height: 48px;
+    }
+
+    .discount-label {
+        font-family: Rubik;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .nivea-banner-img1 {
+        height: 141px;
+        position: absolute;
+        top: 350px;
+        left: 180px;
+        z-index: 5;
+    }
+
+    .nivea-banner-img2 {
+        height: 248px;
+        position: absolute;
+        top: 10px;
+        right: unset;
+        z-index: 5;
+    }
+}
 </style>
