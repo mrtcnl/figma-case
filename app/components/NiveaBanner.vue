@@ -48,7 +48,7 @@
     border-top-left-radius: 40px;
     border-bottom-right-radius: 40px;
     background-color: #FFFFFF;
-    z-index: 10;
+    z-index: 1;
 }
 
 .banner-text-group {
@@ -134,6 +134,24 @@
     z-index: 5;
 }
 
+@media (max-width: 1367px) {
+    .nivea-banner-img1 {
+        height: 292px;
+        position: absolute;
+        top: 75px;
+        left: 120px;
+        z-index: 5;
+    }
+
+    .nivea-banner-img2 {
+        height: 294px;
+        position: absolute;
+        top: 51px;
+        right: 250px;
+        z-index: 5;
+    }
+}
+
 @media (max-width: 768px) {
     .nivea-banner-container {
         width: 100%;
@@ -176,6 +194,7 @@
         top: 350px;
         left: 180px;
         z-index: 5;
+        overflow: hidden !important;
     }
 
     .nivea-banner-img2 {

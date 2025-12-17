@@ -34,7 +34,6 @@
                                     <option>İstanbul</option>
                                     <option>Ankara</option>
                                 </select>
-                                <Icon name="fa-solid:chevron-down" class="select-icon" />
                             </div>
                         </div>
                         <div class="form-group"><label>District *</label>
@@ -42,7 +41,6 @@
                                 <select class="form-input">
                                     <option>Please select</option>
                                 </select>
-                                <Icon name="fa-solid:chevron-down" class="select-icon" />
                             </div>
                         </div>
                         <div class="form-group full-width"><label>Address *</label><textarea class="form-input textarea"
@@ -604,19 +602,21 @@ const formatExpiryDate = (e: Event) => {
     color: #2A2A48;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .checkout-page-main-content {
-        padding: 20px;
+        padding: 16px;
         grid-template-columns: 1fr;
     }
 
     .checkout-page-left-container {
         grid-column: span 1;
+        gap: 16px;
     }
 
     .checkout-page-right-container {
         grid-column: span 1;
         order: -1;
+        gap: 16px;
     }
 
     .payment-layout {
@@ -626,6 +626,52 @@ const formatExpiryDate = (e: Event) => {
     .visual-card {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .checkout-page-header {
+        padding: 16px;
+    }
+
+    .checkout-page-header-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .cart-summary-box {
+        box-shadow: none;
+        border: none;
+        border-radius: 6px;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .form-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .payment-form {
+        flex: 1;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .pay-btn {
+        height: 32px;
+        width: 100%;
     }
 }
 </style>
