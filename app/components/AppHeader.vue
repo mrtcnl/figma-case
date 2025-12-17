@@ -18,7 +18,7 @@
             </div>
             <div class="header-top-right-container">
                 <div class="header-top-button">
-                    <span>Call us:(+90) 850 123 45 67</span>
+                    <span class="header-phone-number">Call us:(+90) 850 123 45 67</span>
                     <Icon name="fa7-solid:phone-alt" size="20" />
                 </div>
             </div>
@@ -57,6 +57,14 @@
                         </div>
                     </a>
                 </div>
+            </div>
+            <div class="header-main-right-container-mobile">
+                <a href="/checkout">
+                    <div class="cart-wrapper">
+                        <Icon name="fa7-solid:basket-shopping" class="cart-icon" size="24" />
+                        <span class="cart-badge">2</span>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="header-nav-menu">
@@ -299,5 +307,51 @@
 .header-nav-item:hover {
     background-color: #ECECEC;
     color: #009da0;
+}
+
+.header-main-right-container-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header-top-bar {
+        padding: 0 16px;
+        height: 32px;
+    }
+
+    .header-top-mid-container {
+        display: none;
+    }
+
+    .header-phone-number {
+        display: none;
+    }
+
+    .header-main-container {
+        height: 56px;
+        padding: 0 16px;
+    }
+
+    .header-main-left-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-main-right-container {
+        display: none;
+    }
+
+    .header-logo {
+        height: 24px;
+    }
+
+    .header-main-right-container-mobile{
+        display: flex;
+        gap: 32px;
+    }
+
+    .header-nav-menu{
+        display: none;
+    }
 }
 </style>

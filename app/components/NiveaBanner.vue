@@ -134,4 +134,6 @@
     right: 200px;
     z-index: 5;
 }
+
+media 
 </style>
