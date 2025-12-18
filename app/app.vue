@@ -9,11 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import AppHeader from '~/components/AppHeader.vue' 
+import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 
 useHead({
   link: [
+    { rel: 'icon', type: 'image/png', href: '/favicon.png' },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
     {
