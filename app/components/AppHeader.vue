@@ -484,7 +484,7 @@ const toggleMenu = () => {
 }
 
 .mobile-menu-footer {
-    margin-top: auto;
+    margin-top: 0px;
     background-color: #ECECEC4D;
     padding-bottom: 20px;
 }

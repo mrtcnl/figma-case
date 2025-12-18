@@ -156,6 +156,7 @@
     .nivea-banner-container {
         width: 100%;
         height: 514px;
+        overflow: hidden;
     }
 
     .nivea-banner-text-container {
